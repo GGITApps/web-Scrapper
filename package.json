@@ -1,0 +1,19 @@
+{
+  "name": "web-scrapper",
+  "version": "1.0.0",
+  "description": "Web Scrapper",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GGITApps/web-Scrapper.git"
+  },
+  "author": "Camilo Salinas",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GGITApps/web-Scrapper/issues"
+  },
+  "homepage": "https://github.com/GGITApps/web-Scrapper#readme"
+}
