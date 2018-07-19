@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/GGITApps/web-Scrapper/issues"
   },
-  "homepage": "https://github.com/GGITApps/web-Scrapper#readme"
+  "homepage": "https://github.com/GGITApps/web-Scrapper#readme",
+  "dependencies": {
+    "puppeteer": "^1.6.0"
+  }
 }
