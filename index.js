@@ -8,7 +8,7 @@ const HCCrawler = require('headless-chrome-crawler');
   const crawler = await HCCrawler.launch({
     // Function to be evaluated in browsers
     evaluatePage: (() => ({
-      title: $('.collapsible-body .row').children().eq(1).text(),
+      title: $('.main-container'),
     })),
     // Function to be called with evaluated results from browsers
     onSuccess: (result => {
