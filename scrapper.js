@@ -2,7 +2,7 @@
  const fs = require('fs');
 
 let scrape = async (suburl) => {
-          const browser = await puppeteer.launch({headless: true});
+          const browser = await puppeteer.launch({headless: false});
           // const browser = await puppeteer.launch();
           const page = await browser.newPage();
 
@@ -44,6 +44,7 @@ module.exports = {
     scrape(carrera).then((value) => {
                           
       let nrcs= value[1];
+      
       const data = [];
       for(i =0; i<value[0].length; i+=3){
         let temparray = value[0].slice(i,i+3);
@@ -52,9 +53,10 @@ module.exports = {
     
         data.push({capacidad, disponible});
       }
-    
+      
       var resultado=[];
       for(i=0; i<data.length; i++){
+        
         let nrc = nrcs[i].split(" ")[1];
         let dataS = data[i]
         resultado.push({CRN:nrc,datos:dataS});
@@ -65,10 +67,40 @@ module.exports = {
       fs.writeFile("./json/"+carrera+".json", content, 'utf8', function (err) {
           if (err) {
             return console.log(err);
-        }
+        } 
+      }); 
+    });
     
-        console.log("The file was saved!");
-        console.log("ERROOOOOOR AQUIIII__----------:"+carrera)
+  },
+  scrappearValores:function(carrera){
+    scrape(carrera).then((value) => {
+                          
+      let nrcs= value[1];
+      
+      const data = [];
+      for(i =0; i<value[0].length; i+=3){
+        let temparray = value[0].slice(i,i+3);
+        let capacidad = temparray[0].split(" ")[1];
+        let disponible = temparray[2].split(" ")[1];
+    
+        data.push({capacidad, disponible});
+      }
+      
+      data.pop();
+      var resultado=[];
+      for(i=0; i<data.length; i++){
+        
+        let nrc = nrcs[i].split(" ")[1];
+        let dataS = data[i]
+        resultado.push({CRN:nrc,datos:dataS});
+      }
+      
+      const content = JSON.stringify(resultado);
+    
+      fs.writeFile("./json/"+carrera+".json", content, 'utf8', function (err) {
+          if (err) {
+            return console.log(err);
+          }
       }); 
     });
     
