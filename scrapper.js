@@ -1,12 +1,12 @@
  const puppeteer = require('puppeteer');
  const fs = require('fs');
 
-let scrape = async (suburl) => {
+let scrape = async () => {
           const browser = await puppeteer.launch({headless: false});
           // const browser = await puppeteer.launch();
           const page = await browser.newPage();
 
-          await page.goto('https://registroapps.uniandes.edu.co/oferta_cursos/index.php/courses?prefix='+suburl+"&term=201820&ptrm=1", {waitUntil: 'networkidle0'});
+          await page.goto('https://registroapps.uniandes.edu.co/oferta_cursos/index.php/courses?term=201820&ptrm=1', {waitUntil: 'networkidle0',timeout: 0});
           const result = await page.evaluate(() => {
 
               
@@ -40,8 +40,8 @@ let scrape = async (suburl) => {
 
 
 module.exports = {
-  scrappearValores:function(carrera){
-    scrape(carrera).then((value) => {
+  scrappearValores:function() {
+    scrape().then((value) => {
                           
       let nrcs= value[1];
       
@@ -64,7 +64,7 @@ module.exports = {
       
       const content = JSON.stringify(resultado);
     
-      fs.writeFile("./json/"+carrera+".json", content, 'utf8', function (err) {
+      fs.writeFile("./json/finale.json", content, 'utf8', function (err) {
           if (err) {
             return console.log(err);
         } 
@@ -72,7 +72,7 @@ module.exports = {
     });
     
   },
-  scrappearValores:function(carrera){
+  scrappearValores2:async function(carrera){
     scrape(carrera).then((value) => {
                           
       let nrcs= value[1];
