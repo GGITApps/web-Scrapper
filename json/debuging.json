@@ -172,20 +172,20 @@
         "disponible": "45"
     },
     {
-        "capacidad": "50",
-        "disponible": "50"
-    },
-    {
-        "capacidad": "48",
-        "disponible": "48"
-    },
-    {
         "capacidad": "48",
         "disponible": "48"
     },
     {
         "capacidad": "50",
         "disponible": "50"
+    },
+    {
+        "capacidad": "50",
+        "disponible": "50"
+    },
+    {
+        "capacidad": "48",
+        "disponible": "48"
     },
     {
         "capacidad": "50",
@@ -472,16 +472,16 @@
         "disponible": "25"
     },
     {
-        "capacidad": "100",
-        "disponible": "100"
+        "capacidad": "25",
+        "disponible": "25"
     },
     {
         "capacidad": "24",
         "disponible": "24"
     },
     {
-        "capacidad": "25",
-        "disponible": "25"
+        "capacidad": "100",
+        "disponible": "100"
     },
     {
         "capacidad": "35",

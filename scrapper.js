@@ -2,7 +2,7 @@
  const fs = require('fs');
 
 let scrape = async (suburl) => {
-          const browser = await puppeteer.launch({headless: true});
+          const browser = await puppeteer.launch({headless: false});
           // const browser = await puppeteer.launch();
           const page = await browser.newPage();
 
@@ -11,7 +11,7 @@ let scrape = async (suburl) => {
 
               
               const valoresCupos = document.querySelectorAll('.collapsible-body.grey.lighten-3 div.row div.col.s4.m4');
-              const spanList = document.querySelectorAll('.collapsible-header .valign-wrapper .col.s12.m12.l12 .row .col.s12.m5.l3 span:nth-child(4)');
+              const spanList = document.querySelectorAll('div.col.s12.m12.l12 > .row > div > span:nth-child(6)');
               const spanS =[];
               
               for (let span of spanList){
@@ -46,18 +46,7 @@ module.exports = {
     
         data.push({capacidad, disponible});
       }
-      console.log(data);
-      fs.writeFile("./json/debuging.json", JSON.stringify(data, null, 4), 'utf8', function (err) {
-        if (err) {
-          return console.log(err);
-      }
-      console.log("data impreso")
  
-    });
-      console.log(nrcs.length);
-      
-      console.log(data.length);
-    
       var resultado=[];
       for(i=0; i<data.length; i++){
         let nrc = nrcs[i].split(" ")[1];
@@ -72,8 +61,7 @@ module.exports = {
             return console.log(err);
         }
     
-        console.log("The file was saved!");
-        console.log("ERROOOOOOR AQUIIII__----------:"+carrera)
+      
       }); 
     });
     
