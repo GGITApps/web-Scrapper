@@ -1,17 +1,21 @@
 var scrapper = require('./scrapper.js')
+var fs = require('fs');
 
-setInterval(()=>{
-    scrapper.scrappearValores("ADMI");
-    scrapper.scrappearValores("ANTR");
-    scrapper.scrappearValores("ARQU");
-    scrapper.scrappearValores("ARTE");
-    scrapper.scrappearValores("BIOL");
-    scrapper.scrappearValores("CBCO");
-    scrapper.scrappearValores("CBCA");
-    scrapper.scrappearValores("CIDE");
-    scrapper.scrappearValores("CPOL");
+
+// var objeto = JSON.parse(fs.readdirSync())
+var  arregloConErrores = ["ADMI","ARTE","BIOL",""]
+
+scrapper.scrappearValores("ADMI");
+
+
+
+
+
+
+// // setInterval(()=>{
+
     
-}, 60 * 1000);
+// // }, 10 * 1000);
 
 
 

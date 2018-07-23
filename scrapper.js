@@ -10,20 +10,13 @@ let scrape = async (suburl) => {
           const result = await page.evaluate(() => {
 
               
-              const valoresCupos = document.querySelectorAll('.collapsible-body.grey.lighten-3 > div.row > div.col.s4.m4  ');
-              const spanList = document.querySelectorAll('.col.s12.m12.l12 > .row > .col.s12.m5.l3 > span ');
+              const valoresCupos = document.querySelectorAll('.collapsible-body.grey.lighten-3 div.row div.col.s4.m4');
+              const spanList = document.querySelectorAll('.collapsible-header .valign-wrapper .col.s12.m12.l12 .row .col.s12.m5.l3 span:nth-child(4)');
               const spanS =[];
-              let contador= 0;
+              
               for (let span of spanList){
                 let spancito = span.innerHTML.trim();
-                contador++;
-                if(contador==4){
-                  spanS.push(spancito);
-                  
-                }
-                if(contador==9){
-                  contador=0;
-                }
+                spanS.push(spancito);
                 
               }              
               let something = [];
@@ -44,6 +37,7 @@ module.exports = {
     scrape(carrera).then((value) => {
                           
       let nrcs= value[1];
+      
       const data = [];
       for(i =0; i<value[0].length; i+=3){
         let temparray = value[0].slice(i,i+3);
@@ -52,6 +46,17 @@ module.exports = {
     
         data.push({capacidad, disponible});
       }
+      console.log(data);
+      fs.writeFile("./json/debuging.json", JSON.stringify(data, null, 4), 'utf8', function (err) {
+        if (err) {
+          return console.log(err);
+      }
+      console.log("data impreso")
+ 
+    });
+      console.log(nrcs.length);
+      
+      console.log(data.length);
     
       var resultado=[];
       for(i=0; i<data.length; i++){
