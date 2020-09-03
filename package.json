@@ -18,6 +18,6 @@
   "homepage": "https://github.com/GGITApps/web-Scrapper#readme",
   "dependencies": {
     "headless-chrome-crawler": "^1.8.0",
-    "puppeteer": "^1.6.0"
+    "puppeteer": "^1.13.0"
   }
 }
